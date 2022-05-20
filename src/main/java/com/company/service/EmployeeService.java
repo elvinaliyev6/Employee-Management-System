@@ -18,4 +18,8 @@ public class EmployeeService {
     public List<Employee> findAll(){
         return  repo.findAll();
     }
+
+    public void saveEmployee(Employee employee){
+        repo.save(employee);
+    }
 }

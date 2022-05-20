@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Employee</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        .container {
+            margin-top: 100px;
+        }
+
+        .btn-primary{
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <h1>Employee Management System</h1>
+    <hr>
+    <h2>Save Employee</h2>
+
+    <form th:action="@{/addNewEmployee}" th:object="${employee}" method="post">
+        <label>First Name: </label>
+        <input type="text" th:field="*{firstName}" placeholder="Employee first name" class="form-control mb-4 col-4"/>
+        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></p>
+
+        <label>Last Name: </label>
+        <input type="text" th:field="*{lastName}" placeholder="Employee last name" class="form-control mb-4 col-4"/>
+        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
+
+        <label>Email: </label>
+        <input type="email" th:field="*{email}" placeholder="Employee email" class="form-control mb-4 col-4"/>
+<!--        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>-->
+
+        <button type="submit" class="btn btn-info col-2">Save Employee</button>
+    </form>
+</div>
+</body>
+</html>
