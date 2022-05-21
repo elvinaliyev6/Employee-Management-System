@@ -33,8 +33,8 @@
         <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
 
         <label>Email: </label>
-        <input type="email" th:field="*{email}" placeholder="Employee email" class="form-control mb-4 col-4"/>
-<!--        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>-->
+        <input type="text" th:field="*{email}" placeholder="Employee email" class="form-control mb-4 col-4"/>
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
 
         <button type="submit" class="btn btn-info col-2">Save Employee</button>
     </form>
