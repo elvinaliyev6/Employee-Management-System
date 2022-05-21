@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -31,16 +32,28 @@ public class EmployeeController {
         return "new_employee";
     }
 
-    @PostMapping("addNewEmployee")
+    @PostMapping("saveEmployee")
     public String formSuccess(@ModelAttribute("employee") Employee employee, @Valid Employee emp, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
-            return "new_employee";
+            return "update_employee";
         }else{
-            service.saveEmployee(employee);
+
+            try{
+                service.saveEmployee(employee);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             return "redirect:/";
         }
 
+    }
+
+    @GetMapping("/showFormUpdate/{id}")
+    public String showFormUpdate(@PathVariable(value = "id") long id,Model model){
+        Employee employee=service.getEmployee(id);
+        model.addAttribute("employee",employee);
+        return "update_employee";
     }
 
 }
