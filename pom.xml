@@ -41,6 +41,7 @@
             <scope>test</scope>
         </dependency>
 
+<!--        validator-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
